@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <include file="db.changelog-master.xml" />
+
+    <changeSet id="insert_one" author="piskunov">
+        <insert tableName="users">
+            <column name="email">alex@yandex.ru</column>
+            <column name="user_password">$2a$10$c/LVrjM0m7tJzuzYppM8u.rKAwQKN6C0e5oPEIyZ5znepRHuacQRW</column>
+            <column name="user_name">alex</column>
+        </insert>
+        <insert tableName="account">
+            <column name="account_name">Основной счет</column>
+            <column name="balance">30000</column>
+            <column name="user_id">1</column>
+        </insert>
+        <insert tableName="category_transaction">
+            <column name="category_name">Зачисление зарплаты</column>
+            <column name="user_id">1</column>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id">1</column>
+            <column name="role">USER</column>
+        </insert>
+        <insert tableName="transaction">
+            <column name="amount">2000</column>
+            <column name="from_account_id">1</column>
+            <column name="date_and_time">2022-06-06T13:43:46</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
